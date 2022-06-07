@@ -16,7 +16,6 @@ import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import axios from "axios";
 import "./styles.css";
 import ScrollableChat from "./ScrollableChat";
-import Lottie from "react-lottie";
 import animationData from "../animations/lf30_editor_kwvtqh4a.json";
 
 import io from "socket.io-client";
@@ -234,17 +233,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             )}
 
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-              {isTyping ? (
-                <div>
-                  <Lottie
-                    options={defaultOptions}
-                    width={70}
-                    style={{ marginBottom: 15, marginLeft: 0 }}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
+              {isTyping ? <div>Typing...</div> : <></>}
               <Input
                 variant="filled"
                 bg="#E0E0E0"
