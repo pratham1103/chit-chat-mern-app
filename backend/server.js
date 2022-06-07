@@ -52,6 +52,15 @@ const io = require("socket.io")(server, {
   },
 });
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://chit-chat-pm11.herokuapp.com/"
+  );
+
+  next();
+});
+
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
 
