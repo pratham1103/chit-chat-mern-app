@@ -71,7 +71,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io(ENDPOINT, {
+    socket = io("http://localhost:3000/", {
       transports: ["websocket", "polling", "flashsocket"],
     });
     socket.emit("setup", user);
