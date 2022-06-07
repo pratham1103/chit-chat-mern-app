@@ -16,7 +16,6 @@ import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import axios from "axios";
 import "./styles.css";
 import ScrollableChat from "./ScrollableChat";
-import animationData from "../animations/lf30_editor_kwvtqh4a.json";
 
 import io from "socket.io-client";
 
@@ -33,15 +32,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     ChatState();
   const [typing, setTyping] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
   const toast = useToast();
 
