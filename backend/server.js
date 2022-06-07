@@ -6,7 +6,6 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
-import cors from "cors";
 
 dotenv.config();
 connectDB();
@@ -57,15 +56,6 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "http://localhost:3000",
     // credentials: true,
-    handlePreflightRequest: (req, res) => {
-      res.writeHead(200, {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST",
-        "Access-Control-Allow-Headers": "my-custom-header",
-        "Access-Control-Allow-Credentials": true,
-      });
-      res.end();
-    },
   },
 });
 

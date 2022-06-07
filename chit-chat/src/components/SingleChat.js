@@ -71,16 +71,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io(ENDPOINT, {
-      withCredentials: true,
-      transportOptions: {
-        polling: {
-          extraHeaders: {
-            "my-custom-header": "abcd",
-          },
-        },
-      },
-    });
+    socket = io(ENDPOINT);
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
