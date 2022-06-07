@@ -71,8 +71,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io("http://localhost:3000/", {
-      transports: ["websocket", "polling", "flashsocket"],
+    socket = io(ENDPOINT, {
+      withCredentials: true,
+      transportOptions: {
+        polling: {
+          extraHeaders: {
+            "my-custom-header": "abcd",
+          },
+        },
+      },
     });
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnected(true));
