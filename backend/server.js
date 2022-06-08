@@ -41,12 +41,6 @@ if (process.env.NODE_ENV === "production") {
 // Error Handling middlewares
 app.use(notFound);
 app.use(errorHandler);
-const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://chit-chat-pm11.herokuapp.com/",
-  })
-);
 
 const PORT = process.env.PORT;
 
