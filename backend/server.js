@@ -37,11 +37,11 @@ const corsOptions = {
 };
 
 // Enable preflight requests for all routes
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
 
-app.get("/", cors(corsOptions), (req, res, next) => {
-  res.json({ message: "This route is CORS-enabled for an allowed origin." });
-});
+// app.get("/", cors(corsOptions), (req, res, next) => {
+//   res.json({ message: "This route is CORS-enabled for an allowed origin." });
+// });
 
 // --------------------------deployment------------------------------
 
@@ -50,11 +50,11 @@ const __dirname1 = path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/chit-chat/build")));
 
-  app.get("*", (req, res) =>
+  app.get("*", cors(corsOptions), (req, res) =>
     res.sendFile(path.resolve(__dirname1, "chit-chat", "build", "index.html"))
   );
 } else {
-  app.get("/", (req, res) => {
+  app.get("/", cors(corsOptions), (req, res) => {
     res.send("API is running..");
   });
 }
