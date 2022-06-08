@@ -19,7 +19,7 @@ import ScrollableChat from "./ScrollableChat";
 
 import io from "socket.io-client";
 
-const ENDPOINT = "https://chit-chat-pm11.herokuapp.com/";
+const ENDPOINT = "https://chit-chat-pm11.herokuapp.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
