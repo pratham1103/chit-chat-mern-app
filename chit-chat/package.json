@@ -2,7 +2,7 @@
   "name": "chit-chat",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://chit-chat-pm11.herokuapp.com/",
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.1",
     "@chakra-ui/react": "^2.1.2",
