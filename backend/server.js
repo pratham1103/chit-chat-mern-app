@@ -6,11 +6,10 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const path = require("path");
-const cors = require("cors");
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors());
+
 app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
@@ -53,7 +52,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chit-chat-pm11.herokuapp.com/",
     // credentials: true,
   },
 });
