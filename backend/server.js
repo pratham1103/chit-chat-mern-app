@@ -9,7 +9,7 @@ const path = require("path");
 dotenv.config();
 connectDB();
 const app = express();
-
+const cors = require("cors");
 app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
@@ -19,6 +19,29 @@ app.use(express.json()); // to accept json data
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
+
+const allowedOrigins = [
+  "https://chit-chat-pm11.herokuapp.com/",
+
+  "http://localhost:3000",
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origin not allowed by CORS"));
+    }
+  },
+};
+
+// Enable preflight requests for all routes
+app.options("*", cors(corsOptions));
+
+app.get("/", cors(corsOptions), (req, res, next) => {
+  res.json({ message: "This route is CORS-enabled for an allowed origin." });
+});
 
 // --------------------------deployment------------------------------
 
