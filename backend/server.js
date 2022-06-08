@@ -41,6 +41,12 @@ if (process.env.NODE_ENV === "production") {
 // Error Handling middlewares
 app.use(notFound);
 app.use(errorHandler);
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "https://chit-chat-pm11.herokuapp.com/",
+  })
+);
 
 const PORT = process.env.PORT;
 
@@ -52,7 +58,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chit-chat-pm11.herokuapp.com/",
+    origin: "http://localhost:3000",
     // credentials: true,
   },
 });
