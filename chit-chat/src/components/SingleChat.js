@@ -40,6 +40,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
     try {
       const config = {
+        baseURL: "https://chit-chat-pm11.herokuapp.com/",
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -73,7 +74,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   useEffect(() => {
     socket = io(ENDPOINT);
     socket.emit("setup", user);
-    socket.on("connection", () => setSocketConnected(true));
+    socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
 
@@ -108,6 +109,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     if (event.key === "Enter" && newMessage) {
       try {
         const config = {
+          baseURL: "https://chit-chat-pm11.herokuapp.com/",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
