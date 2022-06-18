@@ -9,6 +9,7 @@ const path = require("path");
 dotenv.config();
 connectDB();
 const app = express();
+
 app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
